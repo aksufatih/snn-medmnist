@@ -7,7 +7,8 @@ To make it balanced, the dataset is undersampled by randomly chosing 1583 pneumo
 Therefore, the undersampled dataset consists of 1583 normal and 1583 pneumonia cases, 3166 in total. 
 The figure below shows some sample images belong to both classes.
 
-![image](https://github.com/aksufatih/snn-medmnist/assets/49019174/91dda72f-11ac-4d43-92e4-df9c7a252b19)
+![image](https://github.com/aksufatih/snn-medmnist/assets/49019174/47db3d95-a9cf-4b4d-9578-bf27f5b6998e)
+
 
 All the images are gray level and they have a size of 28x28.
 Since the dataset is already clean, no preprocessing is done. 
@@ -18,15 +19,16 @@ The figure below shows an spikes of an example rate coded image.
 For visualization purposes, 100 time steps are used. 
 However, since the input image has a complex nature, the encoded spikes are not meaningful to human eye.
 
-![image](https://github.com/aksufatih/snn-medmnist/assets/49019174/6cd2e96b-1ea5-4ed4-868c-dc32eeac2337)
+![image](https://github.com/aksufatih/snn-medmnist/assets/49019174/ae16ec41-2920-4ebb-be5f-bf8cfa82aee6)
+
 
 We used a fairly simple network for this project, consists of 2 convolutional layers followed by max pooling layers each, and 1 fully connected layer in the end. 
 The leaky integrate and fire neuron model is used as the neurons of the network. 
 More info about the Leaky neuron can be found [here](https://snntorch.readthedocs.io/en/latest/snn.neurons_leaky.html).
 You can find the overall architecture of the model and a brief description of Leaky neuron below.
 
-![nn (5)](https://github.com/aksufatih/snn-medmnist/assets/49019174/586234e7-3ffa-4ea9-ac58-b645d55e6ff3)
-<img width="184" alt="Screenshot 2023-05-29 at 12 05 35" src="https://github.com/aksufatih/snn-medmnist/assets/49019174/82ce63c1-ae8c-40b1-a468-19c2379ffd0e">
+![nn (5)](https://github.com/aksufatih/snn-medmnist/assets/49019174/2c9eff0c-f342-4bf6-a57c-728f1ace8a6a)
+<img width="184" alt="Screenshot 2023-05-29 at 12 05 35" src="https://github.com/aksufatih/snn-medmnist/assets/49019174/1c64ffbe-f1ac-409c-9221-3866a5105dfb">
 
 The network is trained for 20 epochs using Adam optimizer with a starting learning rate of 0.001. 
 The learning rate is decreased by a factor of 0.1 at 10. epoch. 
@@ -37,7 +39,8 @@ The aim of CE rate loss is to increase the frequency of the correct class and de
 The video below shows an example output of an image with pneumonia. 
 As seen in the video, the neuron pneumonia fires with a higher frequency than the other. 
 
-https://github.com/aksufatih/snn-medmnist/assets/49019174/79731be0-fd87-43d6-9ab2-e86f17edc149
+https://github.com/aksufatih/snn-medmnist/assets/49019174/c34bdd05-a1d6-47c4-a226-056dc4b1dace
+
 
 The result of the experiment is shown in the table below with 7 different metrics. Moreover, the loss graph is also depicted to show the training process of the model. The model achieves a 85% accuracy which indicates that it is a fairly good model. It should be noted that because of the time constrains, we didn't tune the hyperparameters in depth. It might be possible to reach higher results  by using a more complex model and tuning the parameters precisely. 
 
@@ -46,4 +49,4 @@ The result of the experiment is shown in the table below with 7 different metric
 | Proposed model |   0.853  |    0.880    |    0.825    |   0.834   |  0.880 |   0.857  | 0.852 |
 
 
-<img src="https://github.com/aksufatih/snn-medmnist/assets/49019174/a8cd4931-5fe6-4a61-be03-9bc8d9d1c58b" width="400" height="275">
+<img src="https://github.com/aksufatih/snn-medmnist/assets/49019174/9441fbdb-ed57-4027-ba70-95fd4bfad41c" width="400" height="275">
