@@ -14,7 +14,7 @@ Since the dataset is already clean, no preprocessing is done.
 The only process done before feeding them to the network is spike encoding.
 We applied rate coding to the images which transforms gray level intensities to spike frequencies. 
 We used 20 time steps, chosen emprically, for all the experiments. 
-The figure below shows an example rate coded image.
+The figure below shows an spikes of an example rate coded image.
 For visualization purposes, 100 time steps are used. 
 However, since the input image has a complex nature, the encoded spikes are not meaningful to human eye.
 
@@ -29,7 +29,7 @@ You can find the overall architecture of the model and a brief description of Le
 <img width="184" alt="Screenshot 2023-05-29 at 12 05 35" src="https://github.com/aksufatih/snn-medmnist/assets/49019174/82ce63c1-ae8c-40b1-a468-19c2379ffd0e">
 
 The network is trained for 20 epochs using Adam optimizer with a starting learning rate of 0.001. 
-The learning rate is decreased by a factor of 0.1 at epoch 10. 
+The learning rate is decreased by a factor of 0.1 at 10. epoch. 
 Membrane potential decay rate is chosen as 0.6 in Leaky neurons. 
 Spike rate cross entropy loss is used as loss function. 
 Details of the loss function can be found [here](https://snntorch.readthedocs.io/en/latest/snntorch.functional.html#snntorch.functional.loss.ce_rate_loss).
@@ -39,7 +39,7 @@ As seen in the video, the neuron pneumonia fires with a higher frequency than th
 
 https://github.com/aksufatih/snn-medmnist/assets/49019174/79731be0-fd87-43d6-9ab2-e86f17edc149
 
-The result of the experiment is shown in the table below with 7 different metrics. Moreover, the loss graph is also depicted to show the training process of the model. The model achieves a 85% accuracy which indicates that it is a fairly good model. It should be noted that because of the time constrains, we didn't fine tune the model in depth. It might be possible to reach higher results  by using a more complex model and tuning the parameters precisely. 
+The result of the experiment is shown in the table below with 7 different metrics. Moreover, the loss graph is also depicted to show the training process of the model. The model achieves a 85% accuracy which indicates that it is a fairly good model. It should be noted that because of the time constrains, we didn't tune the hyperparameters in depth. It might be possible to reach higher results  by using a more complex model and tuning the parameters precisely. 
 
 |      Model     | Accuracy | Sensitivity | Specificity | Precision | Recall | F1 Score | GMean |
 |----------------|----------|-------------|-------------|-----------|--------|----------|-------|
