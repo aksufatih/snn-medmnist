@@ -1,5 +1,5 @@
 # SNN-MedMNIST
-This project is implemented for the course "Introduction to Neuromorphic Computing" of National PhD in AI (Health and Life Sciences).
+This project is implemented with [snnTorch](https://snntorch.readthedocs.io/en/latest/index.html) for the course "Introduction to Neuromorphic Computing" of National PhD in AI (Health and Life Sciences).
 The main objective of the project is classifying chest x-ray images as pneumonia or normal. 
 Because of the time and computational constrains, a simplified dataset is chosen, namely PneumoniaMNIST, a subset of [MedMNIST](https://medmnist.com/) which is a large-scale lightweight benchmark for medical image classification. 
 The original dataset consists of 5,856 images; 1583 normal, 4273 pneumonia cases.
@@ -28,6 +28,22 @@ You can find the overall architecture of the model and a brief description of Le
 ![nn (5)](https://github.com/aksufatih/snn-medmnist/assets/49019174/586234e7-3ffa-4ea9-ac58-b645d55e6ff3)
 <img width="184" alt="Screenshot 2023-05-29 at 12 05 35" src="https://github.com/aksufatih/snn-medmnist/assets/49019174/82ce63c1-ae8c-40b1-a468-19c2379ffd0e">
 
+The network is trained for 20 epochs using Adam optimizer with a starting learning rate of 0.001. 
+The learning rate is decreased by a factor of 0.1 at epoch 10. 
+Membrane potential decay rate is chosen as 0.6 in Leaky neurons. 
+Spike rate cross entropy loss is used as loss function. 
+Details of the loss function can be found [here](https://snntorch.readthedocs.io/en/latest/snntorch.functional.html#snntorch.functional.loss.ce_rate_loss).
+The aim of CE rate loss is to increase the frequency of the correct class and decrease the frequency of the wrong class.
+The video below shows an example output of an image with pneumonia. 
+As seen in the video, the neuron pneumonia fires with a higher frequency than the other. 
+
+https://github.com/aksufatih/snn-medmnist/assets/49019174/79731be0-fd87-43d6-9ab2-e86f17edc149
+
+The result of the experiment is shown in the table below with 7 different metrics. Moreover, the loss graph is also depicted to show the training process of the model. The model achieves a 85% accuracy which indicates that it is a fairly good model. It should be noted that because of the time constrains, we didn't fine tune the model in depth. It might be possible to reach higher results  by using a more complex model and tuning the parameters precisely. 
+
+|      Model     | Accuracy | Sensitivity | Specificity | Precision | Recall | F1 Score | GMean |
+|----------------|----------|-------------|-------------|-----------|--------|----------|-------|
+| Proposed model |   0.853  |    0.880    |    0.825    |   0.834   |  0.880 |   0.857  | 0.852 |
 
 
-
+<img src="https://github.com/aksufatih/snn-medmnist/assets/49019174/a8cd4931-5fe6-4a61-be03-9bc8d9d1c58b" width="400" height="275">
